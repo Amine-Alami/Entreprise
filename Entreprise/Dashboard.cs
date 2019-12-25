@@ -15,6 +15,7 @@ namespace Entreprise
 		public Dashboard()
 		{
 			InitializeComponent();
+
 			HideAllUserControls();
 			pictureBox6.Show();
 			pictureBox6.BringToFront();
@@ -30,6 +31,7 @@ namespace Entreprise
 			departementUserControl1.Hide();
 			employeUserControl1.Hide();
 			stageUserControl1.Hide();
+			participantUserControl2.Hide();
 			pictureBox6.Hide();
 		}
 
@@ -60,6 +62,13 @@ namespace Entreprise
 			HideAllUserControls();
 			stageUserControl1.Show();
 			stageUserControl1.BringToFront();
+		}
+
+		private void btnParticipant_Click(object sender, EventArgs e)
+		{
+			HideAllUserControls();
+			participantUserControl2.Show();
+			participantUserControl2.BringToFront();
 		}
 	}
 }

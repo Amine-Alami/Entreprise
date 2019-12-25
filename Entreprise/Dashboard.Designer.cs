@@ -41,6 +41,7 @@
 			this.departementUserControl1 = new Entreprise.DepartementUserControl();
 			this.employeUserControl1 = new Entreprise.EmployeUserControl();
 			this.stageUserControl1 = new Entreprise.StageUserControl();
+			this.participantUserControl2 = new Entreprise.ParticipantUserControl();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
 			this.panel2.SuspendLayout();
@@ -115,6 +116,7 @@
 			this.btnParticipant.Name = "btnParticipant";
 			this.btnParticipant.Size = new System.Drawing.Size(212, 100);
 			this.btnParticipant.TabIndex = 0;
+			this.btnParticipant.Click += new System.EventHandler(this.btnParticipant_Click);
 			// 
 			// btnStage
 			// 
@@ -211,11 +213,19 @@
 			this.stageUserControl1.Size = new System.Drawing.Size(1067, 538);
 			this.stageUserControl1.TabIndex = 5;
 			// 
+			// participantUserControl2
+			// 
+			this.participantUserControl2.Location = new System.Drawing.Point(138, 147);
+			this.participantUserControl2.Name = "participantUserControl2";
+			this.participantUserControl2.Size = new System.Drawing.Size(1067, 538);
+			this.participantUserControl2.TabIndex = 6;
+			// 
 			// Dashboard
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1205, 685);
+			this.Controls.Add(this.participantUserControl2);
 			this.Controls.Add(this.stageUserControl1);
 			this.Controls.Add(this.pictureBox6);
 			this.Controls.Add(this.departementUserControl1);
@@ -249,6 +259,7 @@
 		private Bunifu.Framework.UI.BunifuTileButton btnEmploye;
 		private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
 		private StageUserControl stageUserControl1;
+		private ParticipantUserControl participantUserControl2;
 	}
 }
 
