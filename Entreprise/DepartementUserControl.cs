@@ -61,6 +61,8 @@ namespace Entreprise
 			position = 0;
 			txtID.Text = dt.Rows[position][0].ToString();
 			txtNom.Text = dt.Rows[position][1].ToString();
+			bunifuCustomDataGrid1.Rows[position].Selected = true;
+			bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 		}
 
 		private void btnPrevious_Click(object sender, EventArgs e)
@@ -70,6 +72,8 @@ namespace Entreprise
 			{
 				txtID.Text = dt.Rows[position][0].ToString();
 				txtNom.Text = dt.Rows[position][1].ToString();
+				bunifuCustomDataGrid1.Rows[position].Selected = true;
+				bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 			}
 			else
 				position = 0;
@@ -82,6 +86,8 @@ namespace Entreprise
 			{
 				txtID.Text = dt.Rows[position][0].ToString();
 				txtNom.Text = dt.Rows[position][1].ToString();
+				bunifuCustomDataGrid1.Rows[position].Selected = true;
+				bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 			}
 			else
 				position = dt.Rows.Count - 1;
@@ -92,6 +98,8 @@ namespace Entreprise
 			position = dt.Rows.Count - 1;
 			txtID.Text = dt.Rows[position][0].ToString();
 			txtNom.Text = dt.Rows[position][1].ToString();
+			bunifuCustomDataGrid1.Rows[position].Selected = true;
+			bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 		}
 
 		private void bunifuFlatButton4_Click(object sender, EventArgs e)

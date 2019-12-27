@@ -98,6 +98,9 @@ namespace Entreprise
 			txtSalaire.Text = dt.Rows[position][4].ToString();
 			byte[] byteBLOBData = (byte[])dt.Rows[position][5];
 			btnPhoto.Image = ToImage(byteBLOBData);
+
+			bunifuCustomDataGrid1.Rows[position].Selected = true;
+			bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 		}
 
 		private void btnPrevious_Click(object sender, EventArgs e)
@@ -112,6 +115,9 @@ namespace Entreprise
 				txtSalaire.Text = dt.Rows[position][4].ToString();
 				byte[] byteBLOBData = (byte[])dt.Rows[position][5];
 				btnPhoto.Image = ToImage(byteBLOBData);
+
+				bunifuCustomDataGrid1.Rows[position].Selected = true;
+				bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 			}
 			else
 				position = 0;
@@ -129,6 +135,9 @@ namespace Entreprise
 				txtSalaire.Text = dt.Rows[position][4].ToString();
 				byte[] byteBLOBData = (byte[])dt.Rows[position][5];
 				btnPhoto.Image = ToImage(byteBLOBData);
+
+				bunifuCustomDataGrid1.Rows[position].Selected = true;
+				bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 			}
 			else
 				position = dt.Rows.Count - 1;
@@ -144,6 +153,9 @@ namespace Entreprise
 			txtSalaire.Text = dt.Rows[position][4].ToString();
 			byte[] byteBLOBData = (byte[])dt.Rows[position][5];
 			btnPhoto.Image = ToImage(byteBLOBData);
+
+			bunifuCustomDataGrid1.Rows[position].Selected = true;
+			bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 		}
 
 		private void btnNouveau_Click(object sender, EventArgs e)
@@ -186,64 +198,20 @@ namespace Entreprise
 
 		private void btnAjouter_Click(object sender, EventArgs e)
 		{
-			if (txtID.Text != "" && txtNom.Text != "" && txtGrade.Text != "" && txtSalaire.Text != "")
-			{
-				if (MyClass.cnx.State == ConnectionState.Open)
-					MyClass.cnx.Close();
-				MyClass.cnx.Open();
-				cmd.Connection = MyClass.cnx;
-				cmd.CommandType = CommandType.StoredProcedure;
-				cmd.CommandText = "InsertEmploye";
-				cmd.Parameters.Add(new SqlParameter("@idDep", comboBox1.Text));
-				cmd.Parameters.Add(new SqlParameter("@nomEmp", txtNom.Text));
-				cmd.Parameters.Add(new SqlParameter("@gradEmp", txtGrade.Text));
-				cmd.Parameters.Add(new SqlParameter("@salaire", txtSalaire.Text));
-				
-				byte[] data;
-				using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
-				{
-					btnPhoto.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
-					data = stream.ToArray();
-				}
-				cmd.Parameters.Add(new SqlParameter("@photoEmp", data));
-				cmd.ExecuteNonQuery();
-				cmd.Parameters.Clear();
-				ChargerDataGridView();
-			}
-			else
-			{
-				MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
-			}
-		}
-
-		private void btnPhoto_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog opnfd = new OpenFileDialog();
-			opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;*.png;)|*.jpg;*.jpeg;.*.gif;*.png;*.ico;";
-			if (opnfd.ShowDialog() == DialogResult.OK)
-			{
-				btnPhoto.Image = new Bitmap(opnfd.FileName);
-			}
-		}
-
-		private void btnModifier_Click(object sender, EventArgs e)
-		{
-			if (txtID.Text != "" && txtNom.Text != "" && txtGrade.Text != "" && txtSalaire.Text != "")
-			{
-				DialogResult result = MessageBox.Show("Confirmer la modification ", "Confirmation", MessageBoxButtons.OKCancel);
-				if (result == DialogResult.OK)
+			try{ 
+				if (txtID.Text != "" && txtNom.Text != "" && txtGrade.Text != "" && txtSalaire.Text != "")
 				{
 					if (MyClass.cnx.State == ConnectionState.Open)
 						MyClass.cnx.Close();
 					MyClass.cnx.Open();
 					cmd.Connection = MyClass.cnx;
 					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.CommandText = "UpdateEmploye";
-					cmd.Parameters.Add(new SqlParameter("@idEmp", txtID.Text));
+					cmd.CommandText = "InsertEmploye";
 					cmd.Parameters.Add(new SqlParameter("@idDep", comboBox1.Text));
 					cmd.Parameters.Add(new SqlParameter("@nomEmp", txtNom.Text));
 					cmd.Parameters.Add(new SqlParameter("@gradEmp", txtGrade.Text));
 					cmd.Parameters.Add(new SqlParameter("@salaire", txtSalaire.Text));
+				
 					byte[] data;
 					using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
 					{
@@ -255,11 +223,63 @@ namespace Entreprise
 					cmd.Parameters.Clear();
 					ChargerDataGridView();
 				}
-			}
-			else
-			{
-				MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
-			}
+				else
+				{
+					MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
+				}
+			}catch (Exception ex) { MessageBox.Show(ex.Message); }
+		}
+
+		private void btnPhoto_Click(object sender, EventArgs e)
+		{
+			try{
+				OpenFileDialog opnfd = new OpenFileDialog
+				{
+					Filter = "Image Files (*.jpg;*.jpeg;.*.gif;*.png;)|*.jpg;*.jpeg;.*.gif;*.png;*.ico;"
+				};
+				if (opnfd.ShowDialog() == DialogResult.OK)
+				{
+					btnPhoto.Image = new Bitmap(opnfd.FileName);
+				}
+			}catch (Exception ex) { MessageBox.Show("The format of the photo is unsupported !!"); }
+		}
+
+		private void btnModifier_Click(object sender, EventArgs e)
+		{
+			try{ 
+				if (txtID.Text != "" && txtNom.Text != "" && txtGrade.Text != "" && txtSalaire.Text != "")
+				{
+					DialogResult result = MessageBox.Show("Confirmer la modification ", "Confirmation", MessageBoxButtons.OKCancel);
+					if (result == DialogResult.OK)
+					{
+						if (MyClass.cnx.State == ConnectionState.Open)
+							MyClass.cnx.Close();
+						MyClass.cnx.Open();
+						cmd.Connection = MyClass.cnx;
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.CommandText = "UpdateEmploye";
+						cmd.Parameters.Add(new SqlParameter("@idEmp", txtID.Text));
+						cmd.Parameters.Add(new SqlParameter("@idDep", comboBox1.Text));
+						cmd.Parameters.Add(new SqlParameter("@nomEmp", txtNom.Text));
+						cmd.Parameters.Add(new SqlParameter("@gradEmp", txtGrade.Text));
+						cmd.Parameters.Add(new SqlParameter("@salaire", txtSalaire.Text));
+						byte[] data;
+						using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
+						{
+							btnPhoto.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+							data = stream.ToArray();
+						}
+						cmd.Parameters.Add(new SqlParameter("@photoEmp", data));
+						cmd.ExecuteNonQuery();
+						cmd.Parameters.Clear();
+						ChargerDataGridView();
+					}
+				}
+				else
+				{
+					MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
+				}
+			}catch (Exception ex) { MessageBox.Show(ex.Message); }
 		}
 
 		private void bunifuCustomDataGrid1_CellClick(object sender, DataGridViewCellEventArgs e)

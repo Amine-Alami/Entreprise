@@ -55,10 +55,10 @@
 			// bunifuCustomLabel1
 			// 
 			this.bunifuCustomLabel1.AutoSize = true;
-			this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel1.Location = new System.Drawing.Point(281, 48);
+			this.bunifuCustomLabel1.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel1.Location = new System.Drawing.Point(262, 54);
 			this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-			this.bunifuCustomLabel1.Size = new System.Drawing.Size(181, 29);
+			this.bunifuCustomLabel1.Size = new System.Drawing.Size(120, 21);
 			this.bunifuCustomLabel1.TabIndex = 0;
 			this.bunifuCustomLabel1.Text = "ID Departement";
 			// 
@@ -75,10 +75,10 @@
 			// bunifuCustomLabel2
 			// 
 			this.bunifuCustomLabel2.AutoSize = true;
-			this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel2.Location = new System.Drawing.Point(281, 117);
+			this.bunifuCustomLabel2.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel2.Location = new System.Drawing.Point(262, 123);
 			this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-			this.bunifuCustomLabel2.Size = new System.Drawing.Size(210, 29);
+			this.bunifuCustomLabel2.Size = new System.Drawing.Size(140, 21);
 			this.bunifuCustomLabel2.TabIndex = 0;
 			this.bunifuCustomLabel2.Text = "Nom Departement";
 			// 
@@ -342,6 +342,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.White;
 			this.Controls.Add(this.bunifuCustomDataGrid1);
 			this.Controls.Add(this.btnLast);
 			this.Controls.Add(this.btnNext);

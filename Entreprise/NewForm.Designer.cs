@@ -57,20 +57,20 @@
 			// bunifuCustomLabel1
 			// 
 			this.bunifuCustomLabel1.AutoSize = true;
-			this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel1.Location = new System.Drawing.Point(50, 120);
+			this.bunifuCustomLabel1.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel1.Location = new System.Drawing.Point(92, 121);
 			this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-			this.bunifuCustomLabel1.Size = new System.Drawing.Size(105, 29);
+			this.bunifuCustomLabel1.Size = new System.Drawing.Size(67, 21);
 			this.bunifuCustomLabel1.TabIndex = 40;
 			this.bunifuCustomLabel1.Text = "ID Stage";
 			// 
 			// bunifuCustomLabel2
 			// 
 			this.bunifuCustomLabel2.AutoSize = true;
-			this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel2.Location = new System.Drawing.Point(50, 44);
+			this.bunifuCustomLabel2.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel2.Location = new System.Drawing.Point(92, 45);
 			this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-			this.bunifuCustomLabel2.Size = new System.Drawing.Size(131, 29);
+			this.bunifuCustomLabel2.Size = new System.Drawing.Size(83, 21);
 			this.bunifuCustomLabel2.TabIndex = 41;
 			this.bunifuCustomLabel2.Text = "ID Eployée";
 			// 
@@ -114,6 +114,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(493, 272);
 			this.Controls.Add(this.btnNouveau);
 			this.Controls.Add(this.cbStage);

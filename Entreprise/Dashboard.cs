@@ -18,11 +18,6 @@ namespace Entreprise
 
 			HideAllUserControls();
 			pictureBox6.Show();
-			pictureBox6.BringToFront();
-		}
-
-		private void Dashboard_Load(object sender, EventArgs e)
-		{
 			
 		}
 		
@@ -32,6 +27,8 @@ namespace Entreprise
 			employeUserControl1.Hide();
 			stageUserControl1.Hide();
 			participantUserControl2.Hide();
+			fraisUserControl1.Hide();
+			dateUserControl1.Hide();
 			pictureBox6.Hide();
 		}
 
@@ -39,21 +36,21 @@ namespace Entreprise
 		{
 			HideAllUserControls();
 			pictureBox6.Show();
-			pictureBox6.BringToFront();
+			
 		}
 
 		private void btnDepartement_Click(object sender, EventArgs e)
 		{
 			HideAllUserControls();
 			departementUserControl1.Show();
-			departementUserControl1.BringToFront();
+			
 		}
 
 		private void btnEmploye_Click(object sender, EventArgs e)
 		{
 			HideAllUserControls();
 			employeUserControl1.Show();
-			employeUserControl1.BringToFront();
+			
 
 		}
 
@@ -61,14 +58,71 @@ namespace Entreprise
 		{
 			HideAllUserControls();
 			stageUserControl1.Show();
-			stageUserControl1.BringToFront();
+			
 		}
 
 		private void btnParticipant_Click(object sender, EventArgs e)
 		{
 			HideAllUserControls();
 			participantUserControl2.Show();
-			participantUserControl2.BringToFront();
+			
+		}
+
+		public async void WaitSomeTime()
+		{
+			await Task.Delay(1);
+			
+		}
+
+		public void panelSlideIN()
+		{
+			while (panel1.Width > 138)
+			{
+				//WaitSomeTime();
+				panel1.Width = panel1.Width - 1;
+			}
+			
+		}
+
+		public void panelSlideOUT()
+		{
+			while (panel1.Width < 298)
+			{
+				//WaitSomeTime();
+				panel1.Width = panel1.Width + 1;
+			}
+		}
+
+		private void bunifuFlatButton1_MouseLeave(object sender, EventArgs e)
+		{
+			panelSlideIN();
+		}
+
+		private void bunifuFlatButton1_MouseHover(object sender, EventArgs e)
+		{
+			panelSlideOUT();
+		}
+
+		private void bunifuFlatButton2_MouseHover(object sender, EventArgs e)
+		{
+			panelSlideOUT();
+		}
+
+		private void bunifuFlatButton2_MouseLeave(object sender, EventArgs e)
+		{
+			panelSlideIN();
+		}
+
+		private void bunifuFlatButton1_Click(object sender, EventArgs e)
+		{
+			HideAllUserControls();
+			fraisUserControl1.Show();
+		}
+
+		private void bunifuFlatButton2_Click(object sender, EventArgs e)
+		{
+			HideAllUserControls();
+			dateUserControl1.Show();
 		}
 	}
 }

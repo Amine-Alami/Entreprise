@@ -336,30 +336,30 @@
 			// bunifuCustomLabel5
 			// 
 			this.bunifuCustomLabel5.AutoSize = true;
-			this.bunifuCustomLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel5.Location = new System.Drawing.Point(161, 164);
+			this.bunifuCustomLabel5.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel5.Location = new System.Drawing.Point(161, 170);
 			this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-			this.bunifuCustomLabel5.Size = new System.Drawing.Size(67, 29);
+			this.bunifuCustomLabel5.Size = new System.Drawing.Size(43, 21);
 			this.bunifuCustomLabel5.TabIndex = 22;
 			this.bunifuCustomLabel5.Text = "Frais";
 			// 
 			// bunifuCustomLabel3
 			// 
 			this.bunifuCustomLabel3.AutoSize = true;
-			this.bunifuCustomLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel3.Location = new System.Drawing.Point(550, 31);
+			this.bunifuCustomLabel3.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel3.Location = new System.Drawing.Point(586, 36);
 			this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-			this.bunifuCustomLabel3.Size = new System.Drawing.Size(65, 29);
+			this.bunifuCustomLabel3.Size = new System.Drawing.Size(45, 21);
 			this.bunifuCustomLabel3.TabIndex = 20;
 			this.bunifuCustomLabel3.Text = "Nom";
 			// 
 			// bunifuCustomLabel1
 			// 
 			this.bunifuCustomLabel1.AutoSize = true;
-			this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel1.Location = new System.Drawing.Point(161, 34);
+			this.bunifuCustomLabel1.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel1.Location = new System.Drawing.Point(161, 36);
 			this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-			this.bunifuCustomLabel1.Size = new System.Drawing.Size(36, 29);
+			this.bunifuCustomLabel1.Size = new System.Drawing.Size(25, 21);
 			this.bunifuCustomLabel1.TabIndex = 24;
 			this.bunifuCustomLabel1.Text = "ID";
 			// 
@@ -379,20 +379,20 @@
 			// bunifuCustomLabel2
 			// 
 			this.bunifuCustomLabel2.AutoSize = true;
-			this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel2.Location = new System.Drawing.Point(161, 103);
+			this.bunifuCustomLabel2.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel2.Location = new System.Drawing.Point(161, 112);
 			this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-			this.bunifuCustomLabel2.Size = new System.Drawing.Size(164, 29);
+			this.bunifuCustomLabel2.Size = new System.Drawing.Size(107, 21);
 			this.bunifuCustomLabel2.TabIndex = 24;
 			this.bunifuCustomLabel2.Text = "Date de debut";
 			// 
 			// bunifuCustomLabel4
 			// 
 			this.bunifuCustomLabel4.AutoSize = true;
-			this.bunifuCustomLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bunifuCustomLabel4.Location = new System.Drawing.Point(550, 103);
+			this.bunifuCustomLabel4.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.bunifuCustomLabel4.Location = new System.Drawing.Point(586, 112);
 			this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
-			this.bunifuCustomLabel4.Size = new System.Drawing.Size(128, 29);
+			this.bunifuCustomLabel4.Size = new System.Drawing.Size(85, 21);
 			this.bunifuCustomLabel4.TabIndex = 24;
 			this.bunifuCustomLabel4.Text = "Date de fin";
 			// 
@@ -413,6 +413,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.White;
 			this.Controls.Add(this.dateFin);
 			this.Controls.Add(this.dateDebut);
 			this.Controls.Add(this.bunifuCustomDataGrid1);

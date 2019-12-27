@@ -71,6 +71,8 @@ namespace Entreprise
 			dateDebut.Value = (DateTime)dt.Rows[position][2];
 			dateFin.Value = (DateTime)dt.Rows[position][3];
 			txtFrais.Text = dt.Rows[position][4].ToString();
+			bunifuCustomDataGrid1.Rows[position].Selected = true;
+			bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 		}
 
 		private void btnPrevious_Click(object sender, EventArgs e)
@@ -83,6 +85,8 @@ namespace Entreprise
 				dateDebut.Value = (DateTime)dt.Rows[position][2];
 				dateFin.Value = (DateTime)dt.Rows[position][3];
 				txtFrais.Text = dt.Rows[position][4].ToString();
+				bunifuCustomDataGrid1.Rows[position].Selected = true;
+				bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 			}
 			else
 				position = 0;
@@ -98,6 +102,8 @@ namespace Entreprise
 				dateDebut.Value = (DateTime)dt.Rows[position][2];
 				dateFin.Value = (DateTime)dt.Rows[position][3];
 				txtFrais.Text = dt.Rows[position][4].ToString();
+				bunifuCustomDataGrid1.Rows[position].Selected = true;
+				bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 			}
 			else
 				position = dt.Rows.Count - 1;
@@ -111,6 +117,8 @@ namespace Entreprise
 			dateDebut.Value = (DateTime)dt.Rows[position][2];
 			dateFin.Value = (DateTime)dt.Rows[position][3];
 			txtFrais.Text = dt.Rows[position][4].ToString();
+			bunifuCustomDataGrid1.Rows[position].Selected = true;
+			bunifuCustomDataGrid1.FirstDisplayedScrollingRowIndex = bunifuCustomDataGrid1.SelectedRows[0].Index;
 		}
 
 		private void btnNouveau_Click(object sender, EventArgs e)
@@ -155,57 +163,61 @@ namespace Entreprise
 
 		private void btnAjouter_Click(object sender, EventArgs e)
 		{
-			if (txtID.Text != "" && txtNom.Text != "" && txtFrais.Text != "")
-			{
-				if (MyClass.cnx.State == ConnectionState.Open)
-					MyClass.cnx.Close();
-				MyClass.cnx.Open();
-				cmd.Connection = MyClass.cnx;
-				cmd.CommandType = CommandType.StoredProcedure;
-				cmd.CommandText = "InsertStage";
-				cmd.Parameters.Add(new SqlParameter("@nomStag", txtNom.Text));
-				cmd.Parameters.Add(new SqlParameter("@frais", txtFrais.Text));
-				cmd.Parameters.Add(new SqlParameter("@DateDebut", dateDebut.Value));
-				cmd.Parameters.Add(new SqlParameter("@DateFin", dateFin.Value));
-				
-				cmd.ExecuteNonQuery();
-				cmd.Parameters.Clear();
-				ChargerDataGridView();
-			}
-			else
-			{
-				MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
-			}
-		}
-
-		private void btnModifier_Click(object sender, EventArgs e)
-		{
-			if (txtID.Text != "" && txtNom.Text != "" && txtFrais.Text != "")
-			{
-				DialogResult result = MessageBox.Show("Confirmer la modification ", "Confirmation", MessageBoxButtons.OKCancel);
-				if (result == DialogResult.OK)
+			try{ 
+				if (txtID.Text != "" && txtNom.Text != "" && txtFrais.Text != "")
 				{
 					if (MyClass.cnx.State == ConnectionState.Open)
 						MyClass.cnx.Close();
 					MyClass.cnx.Open();
 					cmd.Connection = MyClass.cnx;
 					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.CommandText = "UpdateStage";
-					cmd.Parameters.Add(new SqlParameter("@idStag", txtID.Text));
+					cmd.CommandText = "InsertStage";
 					cmd.Parameters.Add(new SqlParameter("@nomStag", txtNom.Text));
 					cmd.Parameters.Add(new SqlParameter("@frais", txtFrais.Text));
 					cmd.Parameters.Add(new SqlParameter("@DateDebut", dateDebut.Value));
 					cmd.Parameters.Add(new SqlParameter("@DateFin", dateFin.Value));
-
+				
 					cmd.ExecuteNonQuery();
 					cmd.Parameters.Clear();
 					ChargerDataGridView();
 				}
-			}
-			else
-			{
-				MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
-			}
+				else
+				{
+					MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
+				}
+			}catch(Exception ex){ MessageBox.Show(ex.Message); }
+		}
+
+		private void btnModifier_Click(object sender, EventArgs e)
+		{
+			try{ 
+				if (txtID.Text != "" && txtNom.Text != "" && txtFrais.Text != "")
+				{
+					DialogResult result = MessageBox.Show("Confirmer la modification ", "Confirmation", MessageBoxButtons.OKCancel);
+					if (result == DialogResult.OK)
+					{
+						if (MyClass.cnx.State == ConnectionState.Open)
+							MyClass.cnx.Close();
+						MyClass.cnx.Open();
+						cmd.Connection = MyClass.cnx;
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.CommandText = "UpdateStage";
+						cmd.Parameters.Add(new SqlParameter("@idStag", txtID.Text));
+						cmd.Parameters.Add(new SqlParameter("@nomStag", txtNom.Text));
+						cmd.Parameters.Add(new SqlParameter("@frais", txtFrais.Text));
+						cmd.Parameters.Add(new SqlParameter("@DateDebut", dateDebut.Value));
+						cmd.Parameters.Add(new SqlParameter("@DateFin", dateFin.Value));
+
+						cmd.ExecuteNonQuery();
+						cmd.Parameters.Clear();
+						ChargerDataGridView();
+					}
+				}
+				else
+				{
+					MessageBox.Show("Les champs ne doivent pas etre vides !", "Error");
+				}
+			}catch (Exception ex) { MessageBox.Show(ex.Message); }
 		}
 
 		private void bunifuCustomDataGrid1_CellClick(object sender, DataGridViewCellEventArgs e)

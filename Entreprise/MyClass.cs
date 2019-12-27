@@ -57,5 +57,23 @@ namespace Entreprise
 
 			return dr;
 		}
+
+		public static int GetCount(string id)
+		{
+			int count;
+			if (cnx.State == ConnectionState.Open)
+				cnx.Close();
+			cnx.Open();
+			cmd.Connection = cnx;
+			cmd.CommandType = CommandType.StoredProcedure;
+			cmd.CommandText = "GetCount";
+			cmd.Parameters.Add(new SqlParameter("@idStage", id));
+			dr = cmd.ExecuteReader();
+			dt.Load(dr);
+			count = int.Parse(dt.Rows[0][0].ToString());
+			cmd.Parameters.Clear();
+
+			return count;
+		}
 	}
 }
